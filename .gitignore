@@ -1,0 +1,5 @@
+.vscode
+.git
+.old
+node_modules
+git_cheatsheet.txt
