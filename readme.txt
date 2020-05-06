@@ -9,6 +9,7 @@ npx express-generator
 npm install
 ## Installing modules
 npm install <module-name>
+npm install express ejs
 
 ## Run Node.js application
 npm run start
@@ -23,8 +24,8 @@ npm i --package-lock-only
 npm audit fix
 npm audit
 
-## Build docker image with tag <your username>/node-web-app
-docker build -t <your username>/node-web-app
+## Build docker image with tag <your username>/nodejs-web-app
+docker build -t <your username>/nodejs-weather-app
 
-1. Setup SCM to push code to GitHub
+1. Setup SCM to push/pull code
 2. 

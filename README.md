@@ -1,3 +1,6 @@
+## Using app to demo Jenkins pipeline
+Many thanks to creator of this demo app.  Their info is below from original README.
+
 # simple-nodejs-weather-app
 Simple Node.js Command Line Weather Application
 
