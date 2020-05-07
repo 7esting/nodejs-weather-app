@@ -20,8 +20,6 @@ pipeline {
       }
         steps {
           echo "Hello, ${PERSON}, nice to meet you."
-        }
-        steps {
           echo 'Building..'
         }
     }
@@ -33,8 +31,6 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-      }
-      steps {
         sh 'echo "Deployed to AWS at $(date)" |mail -s "Deployed to AWS" hector'
       }
     }
