@@ -38,11 +38,9 @@ pipeline {
     }
     stage('3. Docker push') {
       steps {
-        //withAWS(role:'ECRMgmtRole', roleAccount:'roleAccount', externalId: 'roleExternalId', duration: 900, roleSessionName: 'jenkins-session') {
-        withAWS(role:'ECRMgmtRole', duration: 900, roleSessionName: 'jenkins-session') {
-          echo 'Pushing image to Amazon ECR..'
-          sh 'docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01'
-        }
+        echo 'Pushing image to Amazon ECR..'
+        sh 'docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01'
+        echo 'Docker image pushed to Amazon ECR..'
       }
     }
     stage('4. Test') {
@@ -54,6 +52,7 @@ pipeline {
       steps {
         echo 'Deploying....'
         sh 'echo "Deployed to AWS at $(date)" |mail -s "Deployed to AWS" hector'
+        echo 'Deloyed..'
       }
     }
   }
