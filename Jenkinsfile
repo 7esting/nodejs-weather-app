@@ -9,7 +9,12 @@ junit --is a Pipeline step provided by the plugin:junit[JUnit plugin] for aggreg
 pipeline {
   agent any 
   stages {
-    stage('Build') {
+    stage('1. SCM Checkout') {
+      steps {
+        sh 'eval \$(git 'ssh://git@github.com:7esting/nodejs-weather-app.git')'
+      }
+    }
+    stage('2. Build Docker image') {
       input {
         message "Should we continue?"
         ok "Yes, we should."
@@ -21,31 +26,27 @@ pipeline {
         steps {
           echo "Hello, ${PERSON}, nice to meet you."
           echo 'Building..'
+          sh 'eval \$(docker build -t nodejs-weather-app .)'
+          echo 'Tag Docker image..'
+          sh 'eval \$(docker tag nodejs-weather-app:latest 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:latest)'
         }
     }
-    stage('Test') {
+    stage('3. Docker push') {
+      steps {
+        echo 'Pushing image to Amazon ECR..'
+        sh 'eval \$(docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:latest)'
+      }
+    }
+    stage('4. Test') {
       steps {
         echo 'Testing..'
       }
     }
-    stage('Deploy') {
+    stage('5. Deploy') {
       steps {
         echo 'Deploying....'
         sh 'echo "Deployed to AWS at $(date)" |mail -s "Deployed to AWS" hector'
       }
     }
-  }
-}
-// Script
-node {
-  stage 'Checkout'
-  git 'ssh://git@github.com:7esting/nodejs-weather-app.git'
- 
-  stage 'Docker build'
-  docker.build('demo')
- 
-  stage 'Docker push'
-  docker.withRegistry('https://686378364795.dkr.ecr.us-west-1.amazonaws.com', 'ecr:us-west-1:demo-ecr-credentials') {
-    docker.image('demo').push('latest')
   }
 }
