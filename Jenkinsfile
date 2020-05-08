@@ -32,13 +32,13 @@ pipeline {
           echo 'Building..'
           sh 'eval \$(docker build -t nodejs-weather-app .)'
           echo 'Tag Docker image..'
-          sh 'eval \$(docker tag nodejs-weather-app:latest 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:latest)'
+          sh 'docker tag nodejs-weather-app:latest 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01'
         }
     }
     stage('3. Docker push') {
       steps {
         echo 'Pushing image to Amazon ECR..'
-        sh 'eval \$(docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:latest)'
+        sh 'eval \$(docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01)'
       }
     }
     stage('4. Test') {
