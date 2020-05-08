@@ -29,8 +29,8 @@ pipeline {
       }
         steps {
           echo "Hello, ${PERSON}, nice to meet you."
-          echo 'Building..'
-          sh 'eval \$(docker build -t nodejs-weather-app .)'
+          echo 'Building Docker image..'
+          sh 'docker build -t nodejs-weather-app .'
           echo 'Tag Docker image..'
           sh 'docker tag nodejs-weather-app:latest 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01'
         }
@@ -38,7 +38,7 @@ pipeline {
     stage('3. Docker push') {
       steps {
         echo 'Pushing image to Amazon ECR..'
-        sh 'eval \$(docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01)'
+        sh 'docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01'
       }
     }
     stage('4. Test') {
