@@ -39,7 +39,6 @@ pipeline {
     stage('3. Docker push') {
       steps {
         echo 'Pushing image to Amazon ECR..'
-        sh 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 686378364795.dkr.ecr.us-west-1.amazonaws.com'
         sh 'docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01'
         echo 'Docker image pushed to Amazon ECR..'
       }
