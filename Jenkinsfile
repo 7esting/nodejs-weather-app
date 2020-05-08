@@ -37,8 +37,11 @@ pipeline {
     }
     stage('3. Docker push') {
       steps {
-        echo 'Pushing image to Amazon ECR..'
-        sh 'docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01'
+        //withAWS(role:'ECRMgmtRole', roleAccount:'roleAccount', externalId: 'roleExternalId', duration: 900, roleSessionName: 'jenkins-session') {
+        withAWS(role:'ECRMgmtRole', duration: 900, roleSessionName: 'jenkins-session') {
+          echo 'Pushing image to Amazon ECR..'
+          sh 'docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01'
+        }
       }
     }
     stage('4. Test') {
