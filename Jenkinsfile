@@ -7,12 +7,15 @@ sh --executes the given shell command
 junit --is a Pipeline step provided by the plugin:junit[JUnit plugin] for aggregating test reports.
  */
 pipeline {
-  agent any 
+  agent any
+  options {
+    skipDefaultCheckout(true)
+  }
   stages {
     stage('1. SCM Checkout') {
       steps {
-        git credentialsId: 'github-nodejs-weather-app', url: 'https://github.com/7esting/nodejs-weather-app.git'
-        //sh 'eval \$(git 'ssh://git@github.com:7esting/nodejs-weather-app.git')'
+        //git credentialsId: 'github-nodejs-weather-app', url: 'https://github.com/7esting/nodejs-weather-app.git'
+        checkout scm
       }
     }
     stage('2. Build Docker image') {
