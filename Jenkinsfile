@@ -33,6 +33,7 @@ pipeline {
           sh 'docker build -t nodejs-weather-app .'
           echo 'Tag Docker image..'
           sh 'docker tag nodejs-weather-app:latest 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01'
+          echo 'Docker image tagged..'
         }
     }
     stage('3. Docker push') {
