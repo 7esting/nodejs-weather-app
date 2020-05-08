@@ -11,7 +11,8 @@ pipeline {
   stages {
     stage('1. SCM Checkout') {
       steps {
-        sh 'eval \$(git 'ssh://git@github.com:7esting/nodejs-weather-app.git')'
+        git credentialsId: 'github-nodejs-weather-app', url: 'https://github.com/7esting/nodejs-weather-app.git'
+        //sh 'eval \$(git 'ssh://git@github.com:7esting/nodejs-weather-app.git')'
       }
     }
     stage('2. Build Docker image') {
