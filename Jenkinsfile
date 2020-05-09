@@ -54,9 +54,10 @@ pipeline {
     }
     stage('5. Deploy') {
       steps {
-        echo 'Deploying....'
-        sh 'echo "Deployed to AWS at $(date)" |mail -s "Deployed to AWS" hector'
-        echo 'Deloyed..'
+        echo 'Deploying..$(date)'
+        sh 'aws ecr list-images \
+              --repository-name cluster-autoscaler'
+        echo 'Deloyed..$(date)'
       }
     }
   }
