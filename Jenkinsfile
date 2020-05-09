@@ -54,10 +54,10 @@ pipeline {
     }
     stage('5. Deploy') {
       steps {
-        echo 'Deploying..$(date)'
+        echo 'Deploying..'
         sh 'aws ecr list-images \
-              --repository-name cluster-autoscaler'
-        echo 'Deloyed..$(date)'
+              --repository-name my-ecr-demo'
+        echo 'Deloyed..'
       }
     }
   }
