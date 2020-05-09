@@ -36,7 +36,7 @@ pipeline {
           echo 'Docker image tagged..'
         }
     }
-    stage('3. Docker push') {
+    stage('3. Push Docker image') {
       steps {
         echo 'Pushing image to Amazon ECR..'
         script {
