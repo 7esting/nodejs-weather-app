@@ -36,18 +36,17 @@ pipeline {
           echo 'Docker image tagged..'
         }
     }
-    /*
     stage('3. Docker push') {
       steps {
         echo 'Pushing image to Amazon ECR..'
-        //sh 'docker push 686378364795.dkr.ecr.us-west-1.amazonaws.com/my-ecr-demo:v1.01'
-        docker.withRegistry('https://686378364795.dkr.ecr.us-west-1.amazonaws.com', 'ecr:us-west-1:demo-ecr-credentials') {
-          docker.image('my-ecr-demo').push('beta2')
+        script {
+          docker.withRegistry('https://686378364795.dkr.ecr.us-west-1.amazonaws.com', 'ecr:us-west-1:demo-ecr-credentials') {
+            docker.image('my-ecr-demo').push('v1.01')
+          }
         }
         echo 'Docker image pushed to Amazon ECR..'
       }
     }
-    */
     stage('4. Test') {
       steps {
         echo 'Testing..'
@@ -59,21 +58,6 @@ pipeline {
         sh 'echo "Deployed to AWS at $(date)" |mail -s "Deployed to AWS" hector'
         echo 'Deloyed..'
       }
-    }
-  }
-}
-// docker.withRegistry only allowed in script blocks not with declarative pipeline derectives 
-node {
-  /*
-  stage 'Checkout'
-  git 'ssh://git@github.com:irwin-tech/docker-pipeline-demo.git'
-  
-  stage 'Docker build'
-  docker.build('my-ecr-demo')
-  */
-  stage('3. Docker push') {
-    docker.withRegistry('https://686378364795.dkr.ecr.us-west-1.amazonaws.com', 'ecr:us-west-1:demo-ecr-credentials') {
-    docker.image('my-ecr-demo').push('v1.01')
     }
   }
 }
