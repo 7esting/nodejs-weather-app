@@ -55,7 +55,10 @@ pipeline {
     stage('5. Deploy') {
       steps {
         echo 'Deploying..'
-        sh 'aws ecr list-images --repository-name my-ecr-demo'
+        script {
+          'aws ecr list-images --repository-name my-ecr-demo'
+        }
+        sh 'docker image |grep -i my-ecr-demo'
         echo 'Deloyed..'
       }
     }
