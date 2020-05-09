@@ -73,7 +73,7 @@ node {
   */
   stage('3. Docker push') {
     docker.withRegistry('https://686378364795.dkr.ecr.us-west-1.amazonaws.com', 'ecr:us-west-1:demo-ecr-credentials') {
-    docker.image('my-ecr-demo').push('beta2')
+    docker.image('nodejs-weather-app').push('v1.01')
     }
   }
 }
