@@ -34,7 +34,7 @@ pipeline {
           echo 'Building Docker image...'
           sh 'docker build -t njs .'
           echo 'Tag Docker image...'
-          sh 'docker tag njs:latest 686378364795.dkr.ecr.us-east-1.amazonaws.com/njs:v0.0.1'
+          sh 'docker tag njs:latest 686378364795.dkr.ecr.us-east-1.amazonaws.com/njs:latest'
           echo 'Docker image tagged...'
         }
     }
@@ -43,7 +43,7 @@ pipeline {
         echo 'Pushing image to Amazon ECR...`date`'
         script {
           docker.withRegistry('https://686378364795.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:demo-ecr-credentials') {
-            docker.image('njs').push('v0.0.1')
+            docker.image('njs').push('latest')
           }
         }
         echo 'Docker image pushed to Amazon ECR...`date`'
