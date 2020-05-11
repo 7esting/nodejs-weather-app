@@ -41,14 +41,12 @@ pipeline {
     stage('3. Push Docker image') {
       steps {
         echo 'Pushing image to Amazon ECR...'
-        sh '`date`'
         script {
           docker.withRegistry('https://686378364795.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:demo-ecr-credentials') {
             docker.image('njs').push('latest')
           }
         }
         echo 'Docker image pushed to Amazon ECR...'
-        sh '`date`'
       }
     }
     stage('4. Test') {
