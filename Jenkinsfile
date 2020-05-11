@@ -26,11 +26,11 @@ pipeline {
         ok "Yes, we should."
         submitter "alice,bob"
         parameters {
-            string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+            string(name: 'PERSON', defaultValue: 'Jenkins', description: 'Person who triggered the build.')
         }
       }
         steps {
-          echo "Hello, ${PERSON}, nice to meet you."
+          echo "${PERSON}, has triggered the build."
           echo 'Building Docker image...'
           sh 'docker build -t njs .'
           echo 'Tag Docker image...'
