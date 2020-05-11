@@ -59,7 +59,7 @@ pipeline {
         echo 'Deploying...'
         /*
         script {
-          'aws ecr list-images --repository-name my-ecr-demo'
+          'aws ecr list-images --repository-name njs'
         }
         */
         sh 'docker image ls |grep -in ecr'
