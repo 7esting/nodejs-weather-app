@@ -66,6 +66,7 @@ pipeline {
           'aws ecr list-images --repository-name njs --region us-east-1'
         }
         */
+        echo 'Local Docker images'
         sh 'docker image ls |grep -in ecr'
         echo 'Deloyed...'
       }
