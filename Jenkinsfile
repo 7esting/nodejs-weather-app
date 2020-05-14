@@ -59,7 +59,11 @@ pipeline {
         echo 'Deploying...'
         /*
         script {
-          'aws ecr list-images --repository-name njs'
+          aws ecs run-task --cluster ecs-njs --count 1 --placement-strategy type="spread",field="attribute:ecs.availability-zone" \
+          --launch-type EC2 --task-definition ecs-ec2-taskdef-njs:5 \
+          --region us-east-1
+          aws ecs list-tasks --cluster ecs-njs --region us-east-1
+          'aws ecr list-images --repository-name njs --region us-east-1'
         }
         */
         sh 'docker image ls |grep -in ecr'
