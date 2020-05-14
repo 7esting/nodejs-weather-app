@@ -60,7 +60,7 @@ pipeline {
         /*
         script {
           aws ecs run-task --cluster ecs-njs --count 1 --placement-strategy type="spread",field="attribute:ecs.availability-zone" \
-          --launch-type EC2 --task-definition ecs-ec2-taskdef-njs:5 \
+          --launch-type EC2 --task-definition ecs-ec2-taskdef-njs:7 \
           --region us-east-1
           aws ecs list-tasks --cluster ecs-njs --region us-east-1
           'aws ecr list-images --repository-name njs --region us-east-1'
