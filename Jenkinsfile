@@ -13,6 +13,9 @@ pipeline {
   options {
     skipDefaultCheckout(true)
   }
+  environment {
+    AWS_CLI_PATH = '/usr/local/bin'
+  }
   stages {
     stage('1. SCM Checkout') {
       steps {
@@ -53,9 +56,6 @@ pipeline {
       steps {
         echo 'Testing...'
       }
-    }
-    environment {
-        AWS_CLI_PATH = '/usr/local/bin'
     }
     stage('5. Deploy') {
       steps {
