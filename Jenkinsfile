@@ -54,15 +54,18 @@ pipeline {
         echo 'Testing...'
       }
     }
+    environment {
+        AWS_CLI_PATH = '/usr/local/bin'
+    }
     stage('5. Deploy') {
       steps {
         echo 'Deploying...'
         // withAWS(region:'us-east-1', role: 'JenkinsRole') {
         // withAWS(region:'us-east-1', credentials: 'demo-ecr-credentials') {
           // do something
-          sh 'aws ecs list-tasks --cluster ecs-njs --region us-east-1'
-          sh 'aws ecs update-service --cluster ecs-njs --service njs-service --region us-east-1 --force-new-deployment'
-          sh 'aws ecs list-tasks --cluster ecs-njs --region us-east-1'
+          sh '${AWS_CLI_PATH}/aws ecs list-tasks --cluster ecs-njs --region us-east-1'
+          sh '${AWS_CLI_PATH}/aws ecs update-service --cluster ecs-njs --service njs-service --region us-east-1 --force-new-deployment'
+          sh '${AWS_CLI_PATH}/aws ecs list-tasks --cluster ecs-njs --region us-east-1'
         // }
         /*
         script {
