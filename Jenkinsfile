@@ -58,10 +58,10 @@ pipeline {
       steps {
         echo 'Deploying...'
         // withAWS(region:'us-east-1', role: 'JenkinsRole') {
-        withAWS(region:'us-east-1', credentials: 'demo-ecr-credentials') {
+        // withAWS(region:'us-east-1', credentials: 'demo-ecr-credentials') {
           // do something
-          @aws ecs list-tasks --cluster ecs-njs
-        }
+          sh 'aws ecs list-tasks --cluster ecs-njs'
+        // }
         /*
         script {
           'aws ecr list-images --repository-name njs --region us-east-1'
