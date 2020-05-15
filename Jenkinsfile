@@ -57,7 +57,8 @@ pipeline {
     stage('5. Deploy') {
       steps {
         echo 'Deploying...'
-        withAWS(region:'us-east-1', role: 'JenkinsRole') {
+        // withAWS(region:'us-east-1', role: 'JenkinsRole') {
+        withAWS(region:'us-east-1', credentials: 'demo-ecr-credentials') {
           // do something
           aws ecs list-tasks --cluster ecs-njs
         }
