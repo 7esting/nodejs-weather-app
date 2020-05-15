@@ -60,7 +60,9 @@ pipeline {
         // withAWS(region:'us-east-1', role: 'JenkinsRole') {
         // withAWS(region:'us-east-1', credentials: 'demo-ecr-credentials') {
           // do something
-          sh 'aws ecs list-tasks --cluster ecs-njs'
+          sh 'aws ecs list-tasks --cluster ecs-njs --region us-east-1'
+          sh 'aws ecs update-service --cluster ecs-njs --service njs-service --region us-east-1 --force-new-deployment'
+          sh 'aws ecs list-tasks --cluster ecs-njs --region us-east-1'
         // }
         /*
         script {
