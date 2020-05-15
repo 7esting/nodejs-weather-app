@@ -29,7 +29,7 @@ pipeline {
         ok "Yes, we should."
         submitter "alice,bob"
         parameters {
-            string(name: 'PERSON', defaultValue: 'Jenkins', description: 'Person who triggered the build.')
+            string(name: 'NAME', defaultValue: 'Jenkins', description: 'Person who triggered the build.')
         }
       }
         steps {
@@ -60,13 +60,9 @@ pipeline {
     stage('5. Deploy') {
       steps {
         echo 'Deploying...'
-        // withAWS(region:'us-east-1', role: 'JenkinsRole') {
-        // withAWS(region:'us-east-1', credentials: 'demo-ecr-credentials') {
-          // do something
           sh '${AWS_CLI_PATH}/aws ecs list-tasks --cluster ecs-njs --region us-east-1'
           sh '${AWS_CLI_PATH}/aws ecs update-service --cluster ecs-njs --service njs-service --region us-east-1 --force-new-deployment'
           sh '${AWS_CLI_PATH}/aws ecs list-tasks --cluster ecs-njs --region us-east-1'
-        // }
         /*
         script {
           'aws ecr list-images --repository-name njs --region us-east-1'
