@@ -26,5 +26,4 @@ npm audit
 ## Build docker image with tag <your username>/node-web-app
 docker build -t <your username>/node-web-app
 
-1. Setup SCM to push code to GitHub
-2. 
+
