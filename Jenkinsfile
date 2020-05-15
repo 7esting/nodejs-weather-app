@@ -57,10 +57,15 @@ pipeline {
     stage('5. Deploy') {
       steps {
         echo 'Deploying...'
+        withAWS(region:'us-east-1', role: 'JenkinsRole') {
+          // do something
+          aws ecs list-tasks --cluster ecs-njs
+        }
+        /*
         script {
-          aws ecs list-tasks --cluster ecs-njs --region us-east-1
           'aws ecr list-images --repository-name njs --region us-east-1'
         }
+        */
         echo 'Local Docker images'
         sh 'docker image ls |grep -in ecr'
         echo 'Deloyed...'
