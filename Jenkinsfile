@@ -33,7 +33,7 @@ pipeline {
         }
       }
         steps {
-          echo "${PERSON}, has triggered the build."
+          echo "${NAME}, has triggered the build."
           echo 'Building Docker image...'
           sh 'docker build -t njs .'
           echo 'Tag Docker image...'
