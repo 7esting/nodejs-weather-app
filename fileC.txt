@@ -1,3 +1,0 @@
-File created in new-feature-branch, but not staged or commited
-
-Updated in master and commited
