@@ -2,8 +2,7 @@ This is file B
 
 This is an update to file B
 
-This is a recursive function to find a factorial
-
+// Recursive function to find a factorial 
 def f(n):
   if n < 1:
     return 1
