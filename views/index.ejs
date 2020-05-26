@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head><title>Test</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="/css/nav-footer.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head><title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/nav-footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-<body>
-  <div class="topnav" id="myTopnav">
-    <a href="#home" class="active">Home</a>
-    <!-- <a href="#news">News</a> -->
-    <!-- <a href="#contact">Contact</a> -->
-    <!-- <a href="#about">About</a> -->
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="#home" class="active">Home</a>
+      <!-- <a href="#news">News</a> -->
+      <!-- <a href="#contact">Contact</a> -->
+      <!-- <a href="#about">About</a> -->
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
 
-  <div style="padding-left:16px">
-    <h2>Testing testing...123</h2>
-    
-    <div class="container"><fieldset>
-      <form action="/" method="post">
-        <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
-        <input type="submit" class="ghost-button" value="Get Weather">
-      </form>
-      <% if(weather !== null){ %>
-        <p><%= weather %> &#8457;</p>
-      <% } %>
-      <% if(error !== null){ %>
-        <p><%= error %></p>
-      <% } %>
-    </fieldset></div>
-  </div>
+    <div style="padding-left:16px">
+      <h2>Testing testing...123</h2>
+      
+      <div class="container"><fieldset>
+        <form action="/" method="post">
+          <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
+          <input type="submit" class="ghost-button" value="Get Weather">
+        </form>
+        <% if(weather !== null){ %>
+          <p><%= weather %> &#8457;</p>
+        <% } %>
+        <% if(error !== null){ %>
+          <p><%= error %></p>
+        <% } %>
+      </fieldset></div>
+    </div>
 
-  <script>
-  function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
+    <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
     }
-  }
-  </script>
+    </script>
 
-  <footer>
-    <hr class="horz_line" />
-    <!-- https://www.w3schools.com/charsets/ref_utf_symbols.asp -->
-    &#9925; 2020
-      <table>
-        <thead align="left"><tr><th><code>Links</code></th></tr></thead>
-        <tr><td><code><a href="https://git-scm.com/book/en/v2" target="_blank">Git ebook</a></code></td></tr>
-        <tr><td><code><a href="https://docs.docker.com/" target="_blank">Docker Docs</a></code></td></tr>
-        <tr><td><code><a href="https://jenkins.io/doc/book/pipeline/" target="_blank">Jenkins Pipeline</a></code></td></tr>
-        <tr><td><code><a href="https://learn.hashicorp.com/" target="_blank">HashiCorp - Tools - Terraform</a></code></td></tr>
-      </table>
-  </footer>
-</body>
+    <footer>
+      <hr class="horz_line" />
+      <!-- https://www.w3schools.com/charsets/ref_utf_symbols.asp -->
+      &#9925; 2020
+        <table>
+          <thead align="left"><tr><th><code>Links</code></th></tr></thead>
+          <tr><td><code><a href="https://git-scm.com/book/en/v2" target="_blank">Git ebook</a></code></td></tr>
+          <tr><td><code><a href="https://docs.docker.com/" target="_blank">Docker Docs</a></code></td></tr>
+          <tr><td><code><a href="https://jenkins.io/doc/book/pipeline/" target="_blank">Jenkins Pipeline</a></code></td></tr>
+          <tr><td><code><a href="https://learn.hashicorp.com/" target="_blank">HashiCorp - Tools - Terraform</a></code></td></tr>
+        </table>
+    </footer>
+  </body>
 </html>
