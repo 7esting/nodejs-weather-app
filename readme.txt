@@ -76,13 +76,26 @@ jenkins:x:991:
 Git - Deployments from STAGING to *master branch
 ================================================
 # * * * Conflicts should be resolved downstream by developers * * *
-# Show all local and remote tracking branches
+## Show all local and remote tracking branches
 git branch -a
 
-# Checkout STAGING branch
+## Sync local master with remote tracking orign/master
+git checkout master
+git pull
+
+## Checkout STAGING branch
 git checkout STAGING
 
-# Show last 5 commits upto HEAD
+## Merge *master changes into STAGING
+git merge master
+
+# Show Local & Remote merge status
+git branch --merged HEAD
+git branch --merged STAGING
+git branch --merged origin/STAGING
+git branch --merged <sha>
+
+## Show last 5 commits upto HEAD, in STAGING to grab the commit's to deploy
 git log --oneline -5
 
 # Show a commit's changes
@@ -91,13 +104,7 @@ git show --color-words <sha>
 # Compare commits - continguous commits or range of commits
 git diff <older-commit-sha>..HEAD --color-words
 
-# Show Local & Remote merge status
-git branch --merged HEAD
-git branch --merged STAGING
-git branch --merged origin/STAGING
-git branch --merged <sha>
-
-# Cherry Pick commits from STAGING to *master branch
+## Cherry Pick commits from STAGING to *master branch
 git checkout master
 git cherry-pick -e <sha-of-commit-we-want-from-STAGING-branch>
 
