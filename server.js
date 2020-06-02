@@ -1,4 +1,6 @@
 const express = require('express');
+// Added for partials
+var ejs = require('ejs');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express()
@@ -7,6 +9,7 @@ const apiKey = '6a57868754a2236f203c26ac29f10017';
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+// set the view engine to ejs
 app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
@@ -30,6 +33,12 @@ app.post('/', function (req, res) {
       }
     }
   });
+})
+
+// GET method route for About Page
+app.get('/about', function (req, res) {
+  // res.send('GET request to the homepage')
+  res.render('about')
 })
 
 app.listen(3000, function () {
