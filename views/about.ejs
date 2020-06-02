@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head><title>Home</title>
+  <head><title>About</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/css/nav-footer.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -9,29 +9,20 @@
   <body>
     <div class="topnav" id="myTopnav">
       <a href="/" class="active">Home</a>
-      <!-- <a href="/todo">Todo</a> -->
-      <!-- <a href="contact">Contact</a> -->
-      <!-- <a href="/about">About</a> -->
+      <!-- <a href="#news">News</a> -->
+      <!-- <a href="#contact">Contact</a> -->
+      <a href="/about">About</a>
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
       </a>
     </div>
 
     <div style="padding-left:16px">
-      <h2>Home</h2>
+      <h2>About</h2>
       
-      <div class="container"><fieldset>
-        <form action="/" method="post">
-          <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
-          <input type="submit" class="ghost-button" value="Get Weather">
-        </form>
-        <% if(weather !== null){ %>
-          <p><%= weather %> &#8457;</p>
-        <% } %>
-        <% if(error !== null){ %>
-          <p><%= error %></p>
-        <% } %>
-      </fieldset></div>
+      <div class="container">
+        <p><a href="https://nodejs.org/en/docs/guides/" target="_blank">Node.js</a> application, using <a href="https://www.npmjs.com/package/express" target="_blank">Express</a> web framework and <a href="https://www.npmjs.com/package/ejs" target="_blank">Embedded JavaScript templates</a>.</p>
+      </div>
     </div>
 
     <script>
