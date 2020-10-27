@@ -24,7 +24,7 @@ RUN apt-get update \
 
 
 #
-RUN CONTAINER_IP=$(/sbin/ip route|awk '/default/ { print $3 }')
+RUN CONTAINER_IP=/sbin/ip route|awk '/default/ { print $3 }'
 ENV ECS_METADATA_URI=':51678/v1/metadata'
 ENV ECS_CLUSTER_METADATA=$CONTAINER_IP$ECS_METADATA_URI
 
