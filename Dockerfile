@@ -24,9 +24,9 @@ RUN apt-get update \
 
 
 #
-RUN export ECS_METADATA_URI=':51678/v1/metadata' \
-    && export CONTAINER_IP=$(/sbin/ip route|awk '/default/ { print $3 }') \
-    && export ECS_CLUSTER_METADATA=$CONTAINER_IP$ECS_METADATA_URI 
+RUN CONTAINER_IP=$(/sbin/ip route|awk '/default/ { print $3 }')
+ENV ECS_METADATA_URI=':51678/v1/metadata'
+ENV ECS_CLUSTER_METADATA=$CONTAINER_IP$ECS_METADATA_URI
 
 ADD bootstrap.sh bootstrap.sh
 RUN chmod +x bootstrap.sh
