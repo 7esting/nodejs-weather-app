@@ -24,7 +24,7 @@ RUN apt-get update \
 
 ADD bootstrap.sh bootstrap.sh
 RUN chmod +x bootstrap.sh
-RUN bash bootstrap.sh
+RUN . ./bootstrap.sh
 ## END: aws ecs testing
 
 EXPOSE 3000
