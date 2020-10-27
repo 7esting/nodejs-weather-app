@@ -1,3 +1,6 @@
+#set -e
+
+cat <<EOF > views/about.ejs
 <!DOCTYPE html>
 <html>
   <head><title>About</title>
@@ -20,7 +23,13 @@
       
       <div class="container">
         <p><a href="https://nodejs.org/en/docs/guides/" target="_blank">Node.js</a> application, using <a href="https://www.npmjs.com/package/express" target="_blank">Express</a> web framework and <a href="https://www.npmjs.com/package/ejs" target="_blank">Embedded JavaScript templates</a>.</p>
-      </div>
+        <p><h2>AWS ECS container metadata for this instance</h2></p>
+EOF
+		echo "<pre>" >> views/about.ejs
+		curl -s $ECS_METADATA_URI | python -mjson.tool >> views/about.ejs
+		echo "</pre>" >> /usr/src/app/views/about.ejs
+cat <<EOF >> views/about.ejs
+	  </div>
     </div>
 
     <script>
@@ -38,3 +47,4 @@
     <%- include('templates/footer') %>
   </body>
 </html>
+EOF

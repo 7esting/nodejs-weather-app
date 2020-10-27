@@ -14,6 +14,9 @@ npm install
 npm install <module-name>
 
 ## Run Node.js application
+## start app in debug mode
+export DEBUG=express:*
+
 npm run start
 
 npm start
@@ -111,3 +114,47 @@ git cherry-pick -e <sha-of-commit-we-want-from-STAGING-branch>
 # If we want a range of commits
 # One new SHA will be create for this commit range
 git cherry-pick <shaX>..<shaZ>
+===========
+
+0df1ea0 (HEAD -> master) Updated temperature units display
+9930269 Merge branch 'master' into STAGING
+6b81758 (origin/master) added nav-footer.css
+abac6ea Added Docker build, and run steps
+9c49dd3 Updated CSS
+[hector@centos nodejs-weather-app (master)]
+$ git log --oneline -15 STAGING
+==> 3862935 (origin/STAGING, STAGING) readme.txt update
+4f918ff readme.txt update
+a797335 Revert "Undo this commiet with git revert"
+826eaee Undo this commiet with git revert
+==> b733549 formated html
+0df1ea0 (HEAD -> master) Updated temperature units display
+9930269 Merge branch 'master' into STAGING
+6b81758 (origin/master) added nav-footer.css
+abac6ea Added Docker build, and run steps
+9c49dd3 Updated CSS
+
+
+git log --oneline -5
+git log --oneline -5 origin/STAGING
+
+
+git checkout STAGING
+git pull --rebase=preserve
+#git merge master
+--
+# Interactive Rebase mode
+git rebase -i master new-feature-branch
+
+# Rebase last 3 commits onto the same branch but with the opportunity to modify
+# them. Not recommended to do this on a branch that is shared or published.
+git rebase -i HEAD~3
+--
+git checkout master
+git pull --rebase=preserve
+git log --oneline -5
+git log --oneline -15 STAGING
+git log --graph --all --oneline -n 5
+
+
+git cherry-pick b733549..HEADs

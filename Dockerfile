@@ -15,6 +15,19 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+## START: aws ecs testing only, may be removed when done
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -r /var/lib/apt/lists/*
+
+ADD bootstrap.sh bootstrap.sh
+
+RUN chmod +x bootstrap.sh
+
+RUN bash bootstrap.sh
+## END: aws ecs testing
+
 EXPOSE 3000
 #CMD nmp start
 CMD [ "node", "server.js" ]

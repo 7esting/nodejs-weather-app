@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head><title>About</title>
+  <head><title>404!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/css/nav-footer.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -16,10 +16,13 @@
     </div>
 
     <div style="padding-left:16px">
-      <h2>About</h2>
+      <h2>404</h2>
       
       <div class="container">
-        <p><a href="https://nodejs.org/en/docs/guides/" target="_blank">Node.js</a> application, using <a href="https://www.npmjs.com/package/express" target="_blank">Express</a> web framework and <a href="https://www.npmjs.com/package/ejs" target="_blank">Embedded JavaScript templates</a>.</p>
+        <p><% if(message !== null){ %>
+          <%= message %>
+          <% } %>
+        </p>
       </div>
     </div>
 
