@@ -4,7 +4,6 @@
 export ECS_METADATA_URI=':51678/v1/metadata'
 export CONTAINER_IP=$(/sbin/ip route|awk '/default/ { print $3 }')
 export ECS_CLUSTER_METADATA=$CONTAINER_IP$ECS_METADATA_URI
-curl -s $ECS_CLUSTER_METADATA
 
 cat <<EOF > views/about.ejs
 <!DOCTYPE html>
