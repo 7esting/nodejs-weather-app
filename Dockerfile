@@ -18,13 +18,18 @@ COPY . .
 ## START: aws ecs testing only, may be removed when done
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+    && jq \
     curl \
     && rm -r /var/lib/apt/lists/*
 
+
+#
+RUN ECS_METADATA_URI=':51678/v1/metadata' \
+    && export CONTAINER_IP=$(/sbin/ip route|awk '/default/ { print $3 }') \
+    && export ECS_CLUSTER_METADATA=$CONTAINER_IP$ECS_METADATA_URI 
+
 ADD bootstrap.sh bootstrap.sh
-
 RUN chmod +x bootstrap.sh
-
 RUN bash bootstrap.sh
 ## END: aws ecs testing
 

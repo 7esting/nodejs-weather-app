@@ -26,7 +26,7 @@ cat <<EOF > views/about.ejs
         <p><h2>AWS ECS container metadata for this instance</h2></p>
 EOF
 		echo "<pre>" >> views/about.ejs
-		curl -s $ECS_METADATA_URI | python -mjson.tool >> views/about.ejs
+		curl -s $ECS_CLUSTER_METADATA | jq '.' >> views/about.ejs
 		echo "</pre>" >> /usr/src/app/views/about.ejs
 cat <<EOF >> views/about.ejs
 	  </div>
