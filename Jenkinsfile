@@ -35,7 +35,7 @@ pipeline {
         steps {
           echo "${NAME}, has triggered the build."
           echo 'Building Docker image...'
-          sh 'docker build -t njs .'
+          sh 'docker build -t dev-njs-ui .'
           echo 'Tag Docker image...'
           sh 'docker tag dev-njs-ui:latest 686378364795.dkr.ecr.us-west-1.amazonaws.com/dev-njs-ui:latest'
           echo 'Docker image tagged...'
